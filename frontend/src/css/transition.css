@@ -1,0 +1,12 @@
+@keyframes slideAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+}
+  
+.transition-transform {
+  animation: slideAnimation 5s linear infinite; /* Adjust the duration as needed */
+}

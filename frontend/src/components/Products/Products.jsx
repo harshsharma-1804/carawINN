@@ -1,13 +1,13 @@
 import React from "react";
 import ProductsCard from "./ProductsCard";
-import ProductsData from "./Products.json";
+import RideData from "../Data/RideData.json";
 
 function createProduct(product) {
   return (
     <ProductsCard
       key={product.id}
       id={product.id}
-      image={product.image}
+      image={product.image[0]}
       title={product.title}
       price={product.price}
       rating={product.rating}
@@ -19,7 +19,7 @@ function createProduct(product) {
 export default function Products() {
     return (
         <div className="flex flex-wrap justify-center">
-        {ProductsData.map(createProduct)}
+        {RideData.map(createProduct)}
         </div>
     );
 }

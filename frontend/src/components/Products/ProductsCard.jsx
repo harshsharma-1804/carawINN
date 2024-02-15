@@ -16,7 +16,7 @@ export default function ProductCard(props) {
     return (
         <div className="relative bg-orange-100 rounded-3xl h-100 w-74 mx-5 my-5  hover:transition transform hover:scale-110 duration-300">
             <div className="absolute top-3 bg-white rounded-t-2xl h-60 w-70 mx-2.5">
-                <img src={props.image} alt="van" className="h-60 w-70 rounded-t-2xl hover:transition transform hover:scale-110 duration-300" />
+                <img src={props.image} alt="van" className="h-60 w-70 rounded-t-2xl " />
             </div>
             <div className="absolute bottom-3 bg-white rounded-b-2xl h-30 w-70 mx-2.5">
                 <div className="absolute top-1 left-2 flex w-65 justify-between">
@@ -28,7 +28,7 @@ export default function ProductCard(props) {
                 </div>
                 <div  className="absolute bottom-3 left-2 flex w-65 justify-between text-">
                     <div className="text-white">
-                        <NavLink to={`bookride`}>
+                        <NavLink to={`/bookride/${props.id}`}>
                             <button id={props.id} className={originalCSS} onClick={changeCSS}>Book Now</button>
                         </NavLink>
                     </div>

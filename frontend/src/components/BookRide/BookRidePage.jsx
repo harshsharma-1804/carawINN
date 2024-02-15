@@ -1,12 +1,15 @@
-export default function BookRidePage() {
+export default function BookRidePage(props) {
+
     return (
         <div className="">
             <div className="flex flex-wrap justify-between justify-center">
-                <div className="h-150 w-5/12 mx-10 my-12 bg-body-secondary"></div>
+                <div className="h-150 w-5/12 mx-10 my-12 bg-body-secondary">
+                    <img src={props.image} alt="van" className={`h-150 w-max rounded-3xl`} />
+                </div>
                 <div className="h-150 w-6/12 mr-10 my-12">
                     <div className="h-30">
-                        <p className="text-4xl mb-2">Lorem ipsum dolor sit amet</p>
-                        <p>Ut gravida imperdiet justo, ac aliquam lorem semper non. Integer eu cursus metus, in pretium urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. </p>
+                        <p className="text-4xl mb-2">{props.title}</p>
+                        <p>{props.subTitle}</p>
                     </div>
                     <div className="relative bg-body-primary w-0.95 my-8 h-90 mx-auto rounded-3xl">
                         <div className="absolute flex flex-wrap m-5 ml-10">
@@ -42,8 +45,8 @@ export default function BookRidePage() {
                     </div>
                     <div className="flex flex-wrap h-25">
                         <div className="flex h-full w-1/2">
-                        <button className="rounded-md bg-red-800 h-10 w-28 ml-5 mt-auto"><p className="text-xs text-white font-semibold">Cost Breakdown</p></button>
-                        <button className="rounded-md bg-red-800 h-10 w-28 ml-5 mt-auto"><p className="text-xs text-white font-semibold">Cost Breakdown</p></button>
+                        <button className="rounded-md bg-red-800 h-10 w-28 ml-5 mt-auto"><p className="text-xs text-white font-semibold">Checkout</p></button>
+                        <button className="rounded-md bg-red-800 h-10 w-28 ml-5 mt-auto"><p className="text-xs text-white font-semibold">Add to Wishlist</p></button>
                         </div>
                         <div className="relative h-full w-1/2 text-right pt-8 pr-5">
                             <p className="text-4xl mb-5">$ <span>497.</span><span className="text-lg">72</span></p>
@@ -52,15 +55,44 @@ export default function BookRidePage() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-wrap bg-blue-200 w-0.98 mx-auto my-5">
-                <div className="mx-20 my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-                <div className="mx-20 my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-                <div className="mx-20 my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
+            <div className="flex flex-wrap bg-body-primary w-0.98 mx-auto my-5 font-semibold">
+
+                {/* <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                    happy
+                    </div>
+                    <div className="flex absolute top-2 rounded-2xl w-full">
+                        <p className=" text-2xl border-b border-gray-800 mx-auto">{props.head}</p>
+                    </div>
+                </div> */} {/*react component*/}
+
+                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                    happy
+                    </div>
+                    <div className="flex absolute top-2 rounded-2xl w-full">
+                        <p className=" text-2xl border-b border-gray-800 mx-auto">Amenities Inside</p>
+                    </div>
+                </div>
+                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                    </div>
+                    <div className="flex absolute top-2 rounded-2xl w-full">
+                        <p className=" text-2xl border-b border-gray-800 mx-auto">Base Breakdown</p>
+                    </div>
+                </div>
+                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                    </div>
+                    <div className="flex absolute top-2 rounded-2xl w-full">
+                        <p className=" text-2xl border-b border-gray-800 mx-auto">Addititonal Services</p>
+                    </div>
+                </div>
             </div>
             <div className="flex flex-wrap bg-blue-200 w-0.98 mx-auto mt-5">
-                <div className="mx-20 my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-                <div className="mx-20 my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-                <div className="mx-20 my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
+                <div className="mx-auto my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
+                <div className="mx-auto my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
+                <div className="mx-auto my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
             </div>
         </div>
     )

@@ -1,19 +1,37 @@
+import React,{useState, useEffect} from "react"
 import { useParams } from "react-router-dom"
 import BookRidePage from "./BookRidePage"
-import ProductData from "../Products/Products.json"
+import RideData from "../Data/RideData.json"
+import useAutoImage from "../../hooks/useAutoImage"
 
-function createBookRide() {
-    const { id } = useParams()
-    const product = ProductData.find((p) => p.id === id)
+function CreateBookRide() {
+    
+    const { id } = useParams();
+    const [data, setData] = useState({})  
+    useEffect(() => {
+        setData(RideData[id-1])
+    }, [id])
+
+    // if (!data) {
+    //     return <div>Loading...</div>; // or handle loading state accordingly
+    // }
+
     return (
-        <BookRidePage />
+        <>
+            <BookRidePage 
+            image= {useAutoImage()}
+            title={data.title}
+            subTitle={data.subTitle}
+            />
+        </>
     )
 }
+
 
 export default function BookRide(){
     return(
         <>
-            <BookRidePage />
+            <CreateBookRide />
         </>
     )
 }
