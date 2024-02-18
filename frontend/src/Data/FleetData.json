@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "fleet1",
+        "image":"",
+        "heading": "Segment 1",
+        "content": ""
+    },
+    {
+        "id": 2,
+        "title": "fleet2",
+        "image":"",
+        "heading": "Segment 2",
+        "content": ""
+    },
+    {
+        "id": 3,
+        "title": "fleet3",
+        "image":"",
+        "heading": "Segment 3",
+        "content": ""
+    }
+]

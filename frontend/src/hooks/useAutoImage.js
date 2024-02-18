@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RideData from '../components/Data/RideData.json'
+import RideData from '../Data/RideData.json'
 import { useParams } from 'react-router-dom';
 
 function useAutoImage() {
@@ -24,7 +24,6 @@ function useAutoImage() {
 
     const autoimage = data.image && data.image[currentIndex];
     return autoimage;
-    ret
 
 }
 

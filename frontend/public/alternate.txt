@@ -1,0 +1,12 @@
+fleet--
+            <div><p className="text-5xl font-semibold ml-10">Fleet</p></div>
+fleet--
+
+const { id } = useParams();
+    const [data, setData] = useState({})  
+    useEffect(() => {
+        setData(FleetData[id-1])
+        console.log(data)   
+    }, [id])
+
+fleet--

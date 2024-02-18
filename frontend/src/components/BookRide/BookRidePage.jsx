@@ -1,3 +1,5 @@
+import Reviews from "../Reviews/Review"
+
 export default function BookRidePage(props) {
 
     return (
@@ -56,44 +58,30 @@ export default function BookRidePage(props) {
                 </div>
             </div>
             <div className="flex flex-wrap bg-body-primary w-0.98 mx-auto my-5 font-semibold">
-
-                {/* <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
-                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
-                    happy
-                    </div>
-                    <div className="flex absolute top-2 rounded-2xl w-full">
-                        <p className=" text-2xl border-b border-gray-800 mx-auto">{props.head}</p>
-                    </div>
-                </div> */} {/*react component*/}
-
-                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
-                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-white">
                     happy
                     </div>
                     <div className="flex absolute top-2 rounded-2xl w-full">
                         <p className=" text-2xl border-b border-gray-800 mx-auto">Amenities Inside</p>
                     </div>
                 </div>
-                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
-                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-white">
                     </div>
                     <div className="flex absolute top-2 rounded-2xl w-full">
                         <p className=" text-2xl border-b border-gray-800 mx-auto">Base Breakdown</p>
                     </div>
                 </div>
-                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl bg-red-300">
-                    <div className="h-full w-full rounded-2xl pt-12 bg-body-secondary">
+                <div className="relative mx-auto my-40 h-100 w-70 rounded-2xl">
+                    <div className="h-full w-full rounded-2xl pt-12 bg-white">
                     </div>
                     <div className="flex absolute top-2 rounded-2xl w-full">
                         <p className=" text-2xl border-b border-gray-800 mx-auto">Addititonal Services</p>
                     </div>
                 </div>
             </div>
-            <div className="flex flex-wrap bg-blue-200 w-0.98 mx-auto mt-5">
-                <div className="mx-auto my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-                <div className="mx-auto my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-                <div className="mx-auto my-40 h-110 w-70 rounded-2xl bg-red-400 text-center">harsh</div>
-            </div>
+            <Reviews/>
         </div>
     )
 }
