@@ -1,6 +1,10 @@
 import {Link, NavLink} from 'react-router-dom';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 export default function ProductCard(props) {
+
+    useScrollToTop();
+
     const originalCSS = 'bg-blue-500 h-8 w-20 ml-1 text-xs rounded hover:bg-blue-400 transition transform  ';
     const changeCSS = (e) => {
         const cardId = e.target.id;
@@ -28,7 +32,7 @@ export default function ProductCard(props) {
                 </div>
                 <div  className="absolute bottom-3 left-2 flex w-65 justify-between text-">
                     <div className="text-white">
-                        <NavLink to={`/fleets/${props.path}/bookride/${props.id}`}>
+                        <NavLink to={`bookride/${props.id}`}>
                             <button id="button" className={originalCSS} onClick={changeCSS}>Book Now</button>
                         </NavLink>
                     </div>

@@ -1,6 +1,8 @@
 import Header from "./Header";
 import Login1 from "./Login1";
 import Login2 from "./Login2";
+import useAutoImage from "../../../hooks/useAutoImage";
+import RideData from "../../../Data/RideData.json"
 
 function SignIn(){
     return(

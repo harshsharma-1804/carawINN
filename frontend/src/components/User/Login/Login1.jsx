@@ -1,5 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom"
-export default function Login1(){
+import useAutoImage from "../../../hooks/useAutoImage";
+
+// 
+
+export default function Login1(props){
 
     const navigate = useNavigate();
 

@@ -13,25 +13,27 @@ function CreateBookRide() {
     useEffect(() => {
         setData(RideData[id-1])
     }, [id, _title])
-    console.log(ridedata)
+    // console.log(ridedata)
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    // const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-        const images = ridedata.image || []
-        const intervalId = setInterval(() => {
-          setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 4000); // Change background every 5 seconds (adjust as needed)
+    // useEffect(() => {
+    //     const images = ridedata.image || []
+    //     const intervalId = setInterval(() => {
+    //       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    //     }, 4000); // Change background every 5 seconds (adjust as needed)
   
-        return () => clearInterval(intervalId);
-      });
+    //     return () => clearInterval(intervalId);
+    //   });
   
-      const autoimage = ridedata.image && ridedata.image[currentIndex];
+    //   const autoimage = ridedata.image && ridedata.image[currentIndex];
+
+   
     
     return (
         <>
             <BookRidePage 
-            image= {autoimage}
+            image= {useAutoImage(RideData)}
             title={ridedata.title}
             subTitle={ridedata.subTitle}
             />

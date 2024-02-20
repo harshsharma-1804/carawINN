@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import RideData from '../Data/RideData.json'
 import { useParams } from 'react-router-dom';
 
-function useAutoImage() {
+function useAutoImage(db) {
     const {id} = useParams()
     const [data,setData] = useState({})
+    
     const [currentIndex, setCurrentIndex] = useState(0);
      // Add your image filenames here
 
     useEffect(()=>{
-            setData(RideData[id-1])
+            setData(db[id-1])
     },[id])
     
 

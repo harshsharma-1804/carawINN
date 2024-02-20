@@ -1,7 +1,9 @@
 import {Link, NavLink, useParams} from "react-router-dom";
+import useScrollToTop from "../../hooks/useScrollToTop"
 
 export default function FleetCard(props) {
-    
+    useScrollToTop();
+
     return(
             <div className="relative mx-auto my-20 h-120 w-70 rounded-2xl bg-body-primary">
                 <div className="w-full h-2/5">

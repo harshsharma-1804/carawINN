@@ -1,11 +1,13 @@
 import Reviews from "../Reviews/Review"
+import useScrollToTop from "../../hooks/useScrollToTop"
 
 export default function BookRidePage(props) {
+    useScrollToTop()
 
     return (
         <div className="">
             <div className="flex flex-wrap justify-between justify-center">
-                <div className="h-150 w-5/12 mx-10 my-12 bg-body-secondary">
+                <div className="h-150 w-5/12 mx-10 my-12 ">
                     <img src={props.image} alt="van" className={`h-150 w-max rounded-3xl`} />
                 </div>
                 <div className="h-150 w-6/12 mr-10 my-12">
@@ -38,7 +40,7 @@ export default function BookRidePage(props) {
                         </div>
                         <div className="absolute bottom-0 flex flex-wrap justify-between h-1/3 w-full rounded-b-3xl">
                             <div className="h-full w-fit ml-8 mt-5">
-                                <input type="checkbox" /><label className="ml-2">Would like to avail driver</label><br/>
+                                <input type="checkbox" /><label className="ml-2">Would like to avail driving assistant</label><br/>
                                 <input type="checkbox" /><label className="ml-2">Include fuel and service charges</label><br/>
                                 <input type="checkbox" /><label className="ml-2">Include road side assistances</label><br/>
                             </div>
