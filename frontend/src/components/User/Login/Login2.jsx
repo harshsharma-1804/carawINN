@@ -1,6 +1,35 @@
-import { NavLink } from "react-router-dom"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink,useNavigate } from "react-router-dom"
+import { login2Thunk } from "../../../Thunks/user.thunks.js"
+export default function LoginPage2(){
 
-export default function Login2(){
+    const userName = useSelector(state => state.User.user.fullName);
+    const userEmail = useSelector(state => state.User.user.email);
+    const [Error,setError] = useState('')
+    const [password,setPassword] = useState('')
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        if (!password) {
+            setError('Please enter your password');
+        }else{
+            try {
+                const userData = await dispatch(login2Thunk(userEmail,password));
+                if (userData) {
+                    navigate('/')
+                }
+                
+            } catch (error) {
+                console.error('Validation Failed: ', error);
+                setError('Password Incorrect');
+            }
+        }
+    }
+
+
     return(
         <>
             <div className="flex flex-wrap h-0.9 w-full">
@@ -13,22 +42,23 @@ export default function Login2(){
 
                     <div className="grid grid-cols-1 justify-items-center content-center w-1/2 h-full pr-10">
                         <p className="pb-2 text-2xl font-semibold w-full">Hello!</p>
-                        <p className="pb-2 text-2xl font-semibold w-full">Harsh Vardhan Sharma</p>
+                        <p className="pb-2 text-2xl font-semibold w-full">{userName}</p>
                         <p className="pb-2 text-base font-medium w-full">Please Authenticate yourself</p>
-                        <form className="w-full h-full pt-12">
+                        <form onSubmit={handleSubmit} className="w-full h-full pt-12">
                         <div className="w-full my-5">
                             <p className="py-1 font-medium">Pasword</p>
-                            <input className="w-full pl-2" placeholder="Please enter your password"/>
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-2" placeholder="Please enter your password"/>
                         </div>
                         <div className="flex w-full my-5 justify-between">
                             <NavLink to=""><p className="font-medium">Forgot Password?</p></NavLink>
-                            <button  className="bg-red-800 rounded-lg w-20 text-white"><p className="m-1">Sign In</p></button>
+                            <button type="submit" className="bg-red-800 rounded-lg w-20 text-white"><p className="m-1">Sign In</p></button>
                         </div>
                         {/* <div className="flex w-full justify-between my-5">
                             <NavLink><p>Forgot Password</p></NavLink>
                             <button className="bg-red-800 rounded-lg w-20 text-white">Sign In</button>
                         </div> */}
                         </form>
+                        {Error && <p className="font-bold text-red-800">{Error} !!</p>}
                     </div> 
                 </div>
             </div>

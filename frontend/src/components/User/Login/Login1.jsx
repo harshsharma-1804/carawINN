@@ -1,16 +1,41 @@
-import { NavLink, useNavigate } from "react-router-dom"
-import useAutoImage from "../../../hooks/useAutoImage";
+import { useState } from "react"
+import { useDispatch,useSelector } from "react-redux"
+import { NavLink,useNavigate,useLocation } from "react-router-dom"
+import { login1Thunk } from "../../../Thunks/user.thunks.js"
 
 // 
 
-export default function Login1(props){
+export default function LoginPage1(){
+    const error = useSelector(state => state.User.error);
 
-    const navigate = useNavigate();
+    const [email,setEmail] = useState("")
+    // const [password,setPassword] = useState("")
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
 
-  // Function to handle the "Next" button click and navigate to /signin/authenticate
-    const navigateToAuthenticate = () => {
-      navigate('/authenticate');
-    };
+
+    // const handleRegisterRedirect = () => {
+    //     // Store the current page's URL in session storage
+    //     sessionStorage.setItem('prevPath', location.pathname);
+    
+    //     // Redirect the user to the login page
+    //     navigate('user/signup');
+    //   };
+
+    const handleLogin = async(e) => {
+        e.preventDefault()
+        try {
+            const userData = await dispatch(login1Thunk(email));
+            if (!userData) {
+                throw new Error('User not found');
+            }
+            navigate('/user/authenticate');
+        } catch (error) {
+          console.error('Login Failed: ', error);
+          // Handle login failure (show error message, etc.)
+        }
+}
 
     return (
         <div className="flex flex-wrap h-0.9 w-full">
@@ -28,16 +53,19 @@ export default function Login1(props){
                             <NavLink><img className="h-8 w-8" src="https://th.bing.com/th?id=ODLS.45f25068-5b96-4c9e-86a3-99b9f949ac29&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"/></NavLink>
                         </div>
                         <p className="text-lg font-semibold">OR</p>
-                        <form className="w-full h-full">
+                        <form onSubmit={handleLogin} className="w-full h-full">
                             <div className="w-full my-5">
-                                <p className="py-1 font-medium">Email/Phone</p>
-                                <input type="email" className="w-full pl-2" placeholder="Please enter your email or phone"/>
+                                <p className="py-1 font-medium">Email</p>
+                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full pl-2" placeholder="Please enter your email"/>
+                                {/* <p className="py-1 font-medium">Pasword</p>
+                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full pl-2" placeholder="Please enter your password"/> */}
                             </div>
                             <div className="flex w-full my-5 justify-between">
-                                <NavLink to="/register"><p className="font-medium">Create Account</p></NavLink>
-                                <button onClick={navigateToAuthenticate} className="bg-red-800 rounded-lg w-20 text-white"><p className="m-1">Next</p></button>
+                                <NavLink to="/user/signup"  /*onClick={handleRegisterRedirect}*/><p className="font-medium">Create Account</p></NavLink>
+                                <button type="submit" className="bg-red-800 rounded-lg w-20 text-white"><p className="m-1">Next</p></button>
                             </div>
                         </form>
+                        {error && <p className="font-bold text-red-800">{error} !!</p>}
                     </div>
                 </div>
             </div>

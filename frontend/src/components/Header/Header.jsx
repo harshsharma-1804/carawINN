@@ -1,14 +1,30 @@
 import React from "react";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink,useLocation,useNavigate} from "react-router-dom";
+import { useHeader } from "../../context/HeaderContext";
 
-export default function Header() {
+const Header = () => {
+
+    const {isSticky} = useHeader();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // const prevPath = sessionStorage.getItem('prevPath');
+
+    // const handleLoginRedirect = () => {
+    //     // Store the current page's URL in session storage
+    //     sessionStorage.setItem('prevPath', location.pathname);
+    
+    //     // Redirect the user to the login page
+    //     navigate('user/signin');
+    //   };
+
     return (
-        <header className="shadow sticky z-50 top-0">
-            <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+        <header className={`fixed top-0 left-0 right-0 z-50 p-1 ${isSticky ? "bg-white text-black" : "bg-transparent text-white"} transition duration-300`}>
+            <nav className={`border-gray-200 px-4 lg:px-6 py-2.5`}>
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <div className='mx-2 my-2'>
                         <Link to="/">
-                            <p className='text-2xl font-semibold'>caraw<span className='text-red-900'>INN</span></p>
+                            <p className={`text-2xl font-semibold`}>caraw<span className='text-red-900'>INN</span></p>
                         </Link>
                     </div>
                     <div
@@ -20,7 +36,7 @@ export default function Header() {
                                 <NavLink
                                     to="/"
                                     className={({isActive}) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive? "text-orange-700":"text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                                        `block py-2 pr-4 pl-3  ${isActive? "text-orange-700":"inherit"} lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 >
                                     Home
@@ -30,7 +46,7 @@ export default function Header() {
                                 <NavLink
                                     to="/fleets"
                                     className={({isActive}) =>
-                                        `block py-2 pr-4 pl-3 duration-200 ${isActive? "text-orange-700":"text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                                        `block py-2 pr-4 pl-3  ${isActive? "text-orange-700":"inherit"} lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 >   
                                     Book Ride
@@ -38,8 +54,8 @@ export default function Header() {
                             </li>
                             <li>
                             <NavLink
-                            to="/signin"
-                            className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg  px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            to="user/signin"
+                            className=" hover:text-orange-700 font-medium rounded-lg  px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                             >
                                 Sign In
                             </NavLink>
@@ -53,3 +69,4 @@ export default function Header() {
     );
 }
 
+export default Header;
