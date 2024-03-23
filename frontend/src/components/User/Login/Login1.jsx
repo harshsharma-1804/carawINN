@@ -30,12 +30,13 @@ export default function LoginPage1(){
             if (!userData) {
                 throw new Error('User not found');
             }
+
             navigate('/user/authenticate');
         } catch (error) {
           console.error('Login Failed: ', error);
           // Handle login failure (show error message, etc.)
         }
-}
+    }
 
     return (
         <div className="flex flex-wrap h-0.9 w-full">

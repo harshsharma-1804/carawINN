@@ -4,9 +4,12 @@ import BookRidePage from "./BookRidePage"
 import RideData from "../../Data/RideData.json"
 import FleetData from "../../Data/FleetData.json"
 import useAutoImage from "../../hooks/useAutoImage"
+import useScrollToTop from "../../hooks/useScrollToTop"
+
 
 
 function CreateBookRide() {
+    useScrollToTop()
     
     const { id, _title } = useParams();
     const [ridedata, setData] = useState({})  

@@ -10,6 +10,7 @@ export default function LoginPage2(){
     const [password,setPassword] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const redirectUrl = sessionStorage.getItem('redirectURL');
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -18,8 +19,17 @@ export default function LoginPage2(){
         }else{
             try {
                 const userData = await dispatch(login2Thunk(userEmail,password));
-                if (userData) {
-                    navigate('/')
+                if (userData) {                    
+                    if (redirectUrl) {
+                        navigate(redirectUrl);
+                        // Clear the stored redirect URL
+                        sessionStorage.removeItem('redirectURL');
+                    } else {
+                        // If no redirect URL is stored, navigate to a default route
+                        //navigate('/'); // Adjust the default route as needed
+                        // sessionStorage.removeItem('redirectUrl');
+                    }
+                    // navigate('/')
                 }
                 
             } catch (error) {

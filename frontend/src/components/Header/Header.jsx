@@ -1,25 +1,35 @@
-import React from "react";
-import {Link, NavLink,useLocation,useNavigate} from "react-router-dom";
+import {Link, NavLink,useNavigate} from "react-router-dom";
 import { useHeader } from "../../context/HeaderContext";
+import {useSelector,useDispatch} from "react-redux";
+import { logoutThunk } from "../../Thunks/user.thunks";
 
 const Header = () => {
-
+    const isHomePage = window.location.pathname === '/' || window.location.pathname === '/home';
     const {isSticky} = useHeader();
-    const location = useLocation();
+
+    const isLoggedIn = useSelector((state) => state.User.isUserLoggedIn);
+    // const userName = useSelector(state => state.User.user.data);
+    // const user = useSelector((state) => state.User.user);
+    const dispatch = useDispatch();
+    // const {isSticky} = useHeader();
     const navigate = useNavigate();
 
-    // const prevPath = sessionStorage.getItem('prevPath');
-
-    // const handleLoginRedirect = () => {
-    //     // Store the current page's URL in session storage
-    //     sessionStorage.setItem('prevPath', location.pathname);
+    const redirectToLogin= () => {
+        sessionStorage.setItem('redirectURL', window.location.pathname);
+        console.log('redirectURL', window.location.href);
+        navigate('user/signin');
+    }
     
-    //     // Redirect the user to the login page
-    //     navigate('user/signin');
-    //   };
+    const handleFunction = () =>{
+        if(!isLoggedIn){
+            redirectToLogin();
+        }else{
+            dispatch(logoutThunk());
+        }
+    }
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 p-1 ${isSticky ? "bg-white text-black" : "bg-transparent text-white"} transition duration-300`}>
+        <header className={`top-0 left-0 right-0 z-50 p-1 ${isHomePage ? 'fixed' : 'sticky bg-white'} ${isHomePage ? isSticky ? 'bg-white text-black' : 'text-white': 'text-black'} transition duration-300`}>
             <nav className={`border-gray-200 px-4 lg:px-6 py-2.5`}>
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <div className='mx-2 my-2'>
@@ -54,10 +64,11 @@ const Header = () => {
                             </li>
                             <li>
                             <NavLink
-                            to="user/signin"
+                            // to="user/signin"
+                            onClick={handleFunction}
                             className=" hover:text-orange-700 font-medium rounded-lg  px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                             >
-                                Sign In
+                                {isLoggedIn? <i className="fa-regular fa-circle-user"/>: 'Sign In'}
                             </NavLink>
                             </li>
                             

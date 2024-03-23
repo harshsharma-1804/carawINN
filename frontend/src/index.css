@@ -5,3 +5,27 @@
 html {
   scroll-behavior:smooth;
 }
+
+/* ------------------------------------------------------- */
+
+::-webkit-scrollbar{
+  width: 6px;
+  background-color: #fff;
+}
+
+/* ::-webkit-scrollbar-track{
+  width:6px;
+  background: #85cab6;
+} */
+
+/* ::-webkit-scrollbar-button:single-button {
+  background-color:rgb(8, 0, 84);
+  height: 16px;
+  width: 10px; 
+}*/
+::-webkit-scrollbar-thumb {
+  background: rgb(135,27,27);
+  /* border: solid 2px red ; */
+  /* border-radius: 10px; */
+}
+/* ------------------------------------------------------- */

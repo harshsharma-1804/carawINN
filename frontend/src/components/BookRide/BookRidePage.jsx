@@ -1,8 +1,6 @@
 import Reviews from "../Reviews/Review"
-import useScrollToTop from "../../hooks/useScrollToTop"
 
 export default function BookRidePage(props) {
-    useScrollToTop()
 
     return (
         <div className="">
@@ -83,7 +81,9 @@ export default function BookRidePage(props) {
                     </div>
                 </div>
             </div>
-            <Reviews/>
+            <div className='overflow-x-hidden'>
+            <Reviews />
+            </div>
         </div>
     )
 }

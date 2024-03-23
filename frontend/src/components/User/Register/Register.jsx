@@ -68,11 +68,11 @@ export default function Register(){
                         <p className="mx-auto text-2xl font-semibold h-fit"> Create Account</p>
                         <form onSubmit={handleRegistration}>
                             <div className="mb-5">
-                                <p className=" font-medium text-sm">Full Name</p>
+                                <p className="font-medium text-sm">Full Name</p>
                                 <input type="text" name="fullName" value={data.fullName} onChange={handleChange} placeholder="Name" className="w-full pl-1"/>
                             </div>
                             <div className="my-5">
-                                <p className=" font-medium text-sm">Email/Phone</p>
+                                <p className="font-medium text-sm">Email/Phone</p>
                                 <input type="email" name="email" value={data.email} onChange={handleChange} placeholder="Email" className="w-full pl-1"/>
                             </div>
                             <div className="flex justify-between my-5">
@@ -81,7 +81,7 @@ export default function Register(){
                                 <input type="password" name="password" value={data.password} onChange={handleChange} placeholder="Password" className=" pl-1"/>
                                 </div>
                                 <div className="ml-2">
-                                <p className=" font-medium text-sm">Confirm Password</p>
+                                <p className="font-medium text-sm">Confirm Password</p>
                                 <input type="password" name="confPassword" value={data.confPassword} onChange={handleChange} placeholder="Confirm Password" className=" pl-1"/>
                                 </div>
                             </div>

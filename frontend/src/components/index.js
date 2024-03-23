@@ -6,6 +6,10 @@ import FleetPage from './Fleet/FleetPage'
 import Products from './Products/Products'
 import BookRide from './BookRide/BookRide'
 import Footer from './Footer/Footer'
+import Dashboard from './User/Dashboard/Dashboard.jsx'
+import Profile from './User/Dashboard/Profile.jsx'
+import PaymentHistory from './User/Dashboard/PaymentHistory.jsx'
+import YourRides from './User/Dashboard/YourRides.jsx'
 
 
-export {Header, Home, Login1, Login2, Register, FleetPage, Products, BookRide, Footer}
+export {Header, Home, Login1, Login2, Register, Dashboard,Profile,PaymentHistory,YourRides,FleetPage, Products, BookRide, Footer}

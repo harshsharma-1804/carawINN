@@ -6,9 +6,7 @@ import { Provider } from 'react-redux';
 
 function Layer2() {
   return (
-    <Provider store={store}>
       <Outlet />
-    </Provider>
   );
 }
 

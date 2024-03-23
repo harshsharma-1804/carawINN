@@ -8,12 +8,10 @@ function Layer1() {
     <HeaderProvider>
     <div className='scroll-smooth'>
         <Header />
-      <div className=''>
-          <Outlet />
-      </div>
-      <Footer />
+        <Outlet />
     </div>
-    </HeaderProvider>
+    <Footer />
+    </HeaderProvider>    
   )
 }
 

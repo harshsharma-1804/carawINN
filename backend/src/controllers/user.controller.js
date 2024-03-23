@@ -5,7 +5,7 @@ import {User} from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 
 // -----------------------------------------generate tokens-----------------------------------------------------
-const generateAccessAndRefreshToken = async(userID) => {
+const generateAccessandRefreshTokens = async(userID) => {
     try {
         const user = await User.findById(userID);
         const accessToken = user.generateAccessToken();
@@ -38,7 +38,7 @@ const registerUser = asyncHandler(async(req, res) => {
     // return res
 
 
-    const {fullName, email, password, phone} = req.body
+    const {fullName, email, password} = req.body
     //console.log("email: ", email);
 
     if (
@@ -60,7 +60,6 @@ const registerUser = asyncHandler(async(req, res) => {
     const user = await User.create({
         fullName,
         email,
-        phone: phone || "",
         password
     })
 
@@ -117,12 +116,13 @@ const login2 = asyncHandler(async(req,res) => {
         throw new ApiError(401, "Invalid Password");
     }
 
-    const {accessToken, refreshToken} = generateAccessAndRefreshToken(user._id);
+    const {accessToken, refreshToken} = await generateAccessandRefreshTokens(user._id);
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
 
-    const options ={
+    const options={
         httpOnly: true,
-        secure: true,
+        secure: false,
+        path: '/'
     }
 
     return res
@@ -135,6 +135,7 @@ const login2 = asyncHandler(async(req,res) => {
 
 // ---------------------------------------logout user-------------------------------------------------------
 const logoutUser = asyncHandler(async (req, res) => {
+    
     await User.findByIdAndUpdate(req.user._id, {$set:{refreshToken: undefined}},{new:true})
     const options = {
         httpOnly: true,
@@ -173,7 +174,8 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
         }
         const options={
             httpOnly: true,
-            secure: true,
+            secure: false,
+            path: '/'
         }
         const {accessToken, newRefreshToken} = await generateAccessandRefreshTokens(user._id);
     

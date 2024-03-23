@@ -17,3 +17,8 @@ export const registerAPI = async (fullName,email,password)=>{
         const response = await instance.post('user/signup',params);
         return response.data;
 }
+
+export const logoutAPI = async () => {
+        const response = await instance.get('user/logout');
+        return response.data;
+}

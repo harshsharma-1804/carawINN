@@ -1,24 +1,24 @@
-import { login1API, login2API, registerAPI } from "../API/user.api";
-import { loginSuccess, loginFailure,registrationSuccess,registrationFailure } from "../features/user/userSlice";
+import { login1API, login2API, logoutAPI,registerAPI } from "../API/user.api";
+import { login1Success, login1Failure,login2Success,logoutSuccess,logoutFailure,registrationSuccess,registrationFailure } from "../features/user/userSlice";
 
 export const login1Thunk = (email) => async(dispatch) => {
   if (!email) {
-    dispatch(loginFailure('Please provide an email address.'));
+    dispatch(login1Failure('Please provide an email address.'));
   }else{
     try {
       const userData = await login1API(email);
-      dispatch(loginSuccess(userData.data));
+      dispatch(login1Success(userData.data));
       // console.log(userData);
       return userData;
     } catch (error) {
-      dispatch(loginFailure('User not found')); // Handle specific error message based on your needs
+      dispatch(login1Failure('User not found')); // Handle specific error message based on your needs
     }
   }
 };
 
 export const login2Thunk = (email,password) => async(dispatch) => {
     const userData = await login2API(email,password);
-    dispatch(loginSuccess(userData.data));
+    dispatch(login2Success(userData.data));
     return userData;
 };
 
@@ -37,5 +37,15 @@ export const registerThunk = (fullName,email,password,confPassword) => async(dis
 
   } catch (error) {
     dispatch(registrationFailure(error.message))
+  }
+}
+
+export const logoutThunk = () => async(dispatch) => {
+  try {
+    const response = await logoutAPI();
+    dispatch(logoutSuccess(response.data));
+    return response;
+  } catch (error) {
+    dispatch(logoutFailure(error.message));
   }
 }
