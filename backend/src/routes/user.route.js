@@ -13,7 +13,7 @@ const router = Router()
 router.route('/signup').post(registerUser)
 router.route('/signin').post(login1)
 router.route('/authenticate').post(login2)
-router.route('/logout').get(verifyJWT,logoutUser)
+router.route('/logout').post(verifyJWT,logoutUser)
 router.route('/refreshToken').post(refreshAccessToken)
 
 // router.route('/data').get(data)

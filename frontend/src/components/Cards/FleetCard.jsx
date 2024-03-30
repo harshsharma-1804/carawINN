@@ -1,9 +1,9 @@
 import {Link, NavLink, useParams} from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop"
+import Button from "../Button/Button";
 
 export default function FleetCard(props) {
     useScrollToTop();
-
     return(
             <div className="relative mx-auto my-20 h-120 w-70 rounded-2xl bg-body-primary">
                 <div className="w-full h-2/5">
@@ -16,7 +16,7 @@ export default function FleetCard(props) {
                     </div>
                     <div className="absolute bottom-5 grid justify-items-center w-full">
                         <NavLink to={`/fleets/${props.title}`}>
-                            <button className="rounded-md bg-red-800 h-10 w-40 mx-auto"><p className="text-xs text-white font-semibold">Explore Rides</p></button>
+                            <Button className="w-40 h-10 font-semibold" content="Explore Rides"/>
                         </NavLink>
                     </div>
                 </div>

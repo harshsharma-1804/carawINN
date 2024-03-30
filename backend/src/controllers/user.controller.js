@@ -54,7 +54,7 @@ const registerUser = asyncHandler(async(req, res) => {
     const existedUser = await User.findOne({email})
 
     if (existedUser) {
-        throw new ApiError(409, "User with email already exists")
+        throw new ApiError(409,"User with email already exists")
     }
 
     const user = await User.create({
@@ -124,6 +124,7 @@ const login2 = asyncHandler(async(req,res) => {
         secure: false,
         path: '/'
     }
+
 
     return res
     .status(200)

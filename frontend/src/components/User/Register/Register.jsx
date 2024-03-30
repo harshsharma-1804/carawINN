@@ -3,6 +3,7 @@ import Header from "./Header"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { registerThunk } from "../../../Thunks/user.thunks.js"
+import Button from "../../Button/Button.jsx"
 
 export default function Register(){
     const error = useSelector(state => state.User.error);
@@ -87,7 +88,8 @@ export default function Register(){
                             </div>
                             <div className="flex w-full justify-between pt-5">
                                 <NavLink to="/user/signin"><p className="font-medium text-sm pt-1">Already have an account?</p></NavLink>
-                                <button type="submit" className="bg-red-900 text-white w-20 rounded-lg"><p className="m-1">Register</p></button>
+                                {/* <button type="submit" className="bg-red-900 text-white w-20 rounded-lg"><p className="m-1">Register</p></button> */}
+                                <Button content="Register" className="w-20 font-semibold"/>
                             </div>
                         </form>
                         {error && <p className="font-bold text-red-800">{error} !!</p>}

@@ -1,21 +1,9 @@
 import {Link, NavLink} from 'react-router-dom';
+import Button from '../Button/Button.jsx';
 import useScrollToTop from '../../hooks/useScrollToTop';
 
 export default function ProductCard(props) {
-
     useScrollToTop();
-
-    const originalCSS = 'bg-blue-500 h-8 w-20 ml-1 text-xs rounded hover:bg-blue-400 transition transform  ';
-    const changeCSS = (e) => {
-        const cardId = e.target.id;
-        const targetElement = document.getElementById(cardId);
-        
-        targetElement.classList.toggle('scale-90'); // Toggle the background color class
-        setTimeout(() => {
-            targetElement.classList.remove('scale-90'); 
-        }, 50);
-    }
-
     
     return (
         <div className="relative bg-body-secondary rounded-3xl h-100 w-74 mx-5 my-5  hover:transition transform hover:scale-110 duration-300">
@@ -33,7 +21,7 @@ export default function ProductCard(props) {
                 <div  className="absolute bottom-3 left-2 flex w-65 justify-between text-">
                     <div className="text-white">
                         <NavLink to={`bookride/${props.id}`}>
-                            <button id="button" className={originalCSS} onClick={changeCSS}>Book Now</button>
+                            <Button className="" content = "Book Now"/>
                         </NavLink>
                     </div>
                     <div className="mr-2">

@@ -19,6 +19,6 @@ export const registerAPI = async (fullName,email,password)=>{
 }
 
 export const logoutAPI = async () => {
-        const response = await instance.get('user/logout');
+        const response = await instance.post('user/logout');
         return response.data;
 }

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink,useNavigate } from "react-router-dom"
 import { login2Thunk } from "../../../Thunks/user.thunks.js"
+import Button from "../../Button/Button.jsx";
 export default function LoginPage2(){
 
     const userName = useSelector(state => state.User.user.fullName);
@@ -61,7 +62,7 @@ export default function LoginPage2(){
                         </div>
                         <div className="flex w-full my-5 justify-between">
                             <NavLink to=""><p className="font-medium">Forgot Password?</p></NavLink>
-                            <button type="submit" className="bg-red-800 rounded-lg w-20 text-white"><p className="m-1">Sign In</p></button>
+                            <Button type="submit" content="Sign In" className="w-20 font-semibold"/>
                         </div>
                         {/* <div className="flex w-full justify-between my-5">
                             <NavLink><p>Forgot Password</p></NavLink>

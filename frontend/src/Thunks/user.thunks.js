@@ -1,4 +1,4 @@
-import { login1API, login2API, logoutAPI,registerAPI } from "../API/user.api";
+import { login1API, login2API,logoutAPI,registerAPI } from "../API/user.api";
 import { login1Success, login1Failure,login2Success,logoutSuccess,logoutFailure,registrationSuccess,registrationFailure } from "../features/user/userSlice";
 
 export const login1Thunk = (email) => async(dispatch) => {
@@ -22,8 +22,31 @@ export const login2Thunk = (email,password) => async(dispatch) => {
     return userData;
 };
 
+// export const login2Thunk = (email, password) => async (dispatch) => {
+//   try {
+//       // Call the login2API function to authenticate the user
+//       const userData = await login2API(email, password);
+
+//       // Dispatch action to handle successful login
+//       dispatch(login2Success(userData.data));
+      
+//       // Extract tokens from cookies
+//       const { accessToken, refreshToken } = extractTokensFromCookies();
+      
+//       // Optionally, you can dispatch actions to store tokens in Redux state
+//       dispatch(storeTokens({ accessToken, refreshToken }));
+
+//       return userData;
+//   } catch (error) {
+//       // Handle login failure (dispatch error action, etc.)
+//       dispatch(login2Failure(error));
+//       throw error; // Rethrow the error to handle it in the calling code
+//   }
+// }
+
 export const registerThunk = (fullName,email,password,confPassword) => async(dispatch) => {
   try {
+  
     if (!fullName || !email || !password || !confPassword) {
       throw new Error('Please provide all required information.');
     }

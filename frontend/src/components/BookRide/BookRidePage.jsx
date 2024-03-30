@@ -1,7 +1,7 @@
 import Reviews from "../Reviews/Review"
-
+import Button from "../Button/Button"
+import { useState } from "react"
 export default function BookRidePage(props) {
-
     return (
         <div className="">
             <div className="flex flex-wrap justify-between justify-center">
@@ -42,13 +42,15 @@ export default function BookRidePage(props) {
                                 <input type="checkbox" /><label className="ml-2">Include fuel and service charges</label><br/>
                                 <input type="checkbox" /><label className="ml-2">Include road side assistances</label><br/>
                             </div>
-                            <div className="flex h-full w-1/3 rounded-ee-3xl"><button className="rounded-md bg-red-800 h-8 w-25 mx-auto my-auto"><p className="text-xs text-white font-semibold">Cost Breakdown</p></button></div>
+                            <div className="flex h-full w-1/3 rounded-ee-3xl">
+                            <Button className="m-auto font-semibold" content="Cost Breakdown"/>
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-wrap h-25">
                         <div className="flex h-full w-1/2">
-                        <button className="rounded-md bg-red-800 h-10 w-28 ml-5 mt-auto"><p className="text-xs text-white font-semibold">Checkout</p></button>
-                        <button className="rounded-md bg-red-800 h-10 w-28 ml-5 mt-auto"><p className="text-xs text-white font-semibold">Add to Wishlist</p></button>
+                        <Button className="ml-5 w-20 font-semibold mt-auto" content="Checkout"/>
+                        <Button className="ml-5 font-semibold mt-auto" content="Add to Wishlist"/>
                         </div>
                         <div className="relative h-full w-1/2 text-right pt-8 pr-5">
                             <p className="text-4xl mb-5">$ <span>497.</span><span className="text-lg">72</span></p>

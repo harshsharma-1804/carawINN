@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch,useSelector } from "react-redux"
 import { NavLink,useNavigate,useLocation } from "react-router-dom"
 import { login1Thunk } from "../../../Thunks/user.thunks.js"
+import Button from "../../Button/Button.jsx";
 
 // 
 
@@ -63,7 +64,7 @@ export default function LoginPage1(){
                             </div>
                             <div className="flex w-full my-5 justify-between">
                                 <NavLink to="/user/signup"  /*onClick={handleRegisterRedirect}*/><p className="font-medium">Create Account</p></NavLink>
-                                <button type="submit" className="bg-red-800 rounded-lg w-20 text-white"><p className="m-1">Next</p></button>
+                                <Button content="Next" className="w-20 font-semibold"/>
                             </div>
                         </form>
                         {error && <p className="font-bold text-red-800">{error} !!</p>}
