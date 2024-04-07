@@ -23,15 +23,15 @@ const vehicleSchema = new Schema({
         required: true
     },
     vehicleAvailable:{
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     vehicleNumber: {
         type: String,
+        unique: true,
         required: true
     },
     vehicleBaseFare: {
-        type: String,
+        type: Number,
         required: true
     },
     vehicleRating: {

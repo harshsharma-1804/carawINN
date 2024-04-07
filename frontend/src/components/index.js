@@ -10,6 +10,7 @@ import Dashboard from './User/Dashboard/Dashboard.jsx'
 import Profile from './User/Dashboard/Profile.jsx'
 import PaymentHistory from './User/Dashboard/PaymentHistory.jsx'
 import YourRides from './User/Dashboard/YourRides.jsx'
+import Setting from './User/Dashboard/Settings.jsx'
 
 
-export {Header, Home, Login1, Login2, Register, Dashboard,Profile,PaymentHistory,YourRides,FleetPage, Products, BookRide, Footer}
+export {Header, Home, Login1, Login2, Register, Dashboard,Profile,PaymentHistory,YourRides,Setting,FleetPage, Products, BookRide, Footer}

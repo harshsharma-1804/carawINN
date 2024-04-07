@@ -15,6 +15,7 @@ export default function Register(){
     const dispatch = useDispatch()
     const navigate = useNavigate()    
     const location = useLocation()
+    const redirectUrl = sessionStorage.getItem('redirectURL');
 
     const handleChange = (e) => {
        setData({
@@ -23,30 +24,12 @@ export default function Register(){
        })
     }
 
-    // const handleValidation = () => {
-    //     if(data.password !== data.confPassword){
-    //         console.error("Password and Confirm Password don't match")
-    //         return false
-    //     }
-    //     return true
-    // }
-
-    // const handleSubmit = async() => {
-    //     navigate("/fleets")
-    // }
-
-    
-
     const handleRegistration = async(e) => {
         e.preventDefault()
         try {
 
             const userData = await dispatch(registerThunk(data.fullName,data.email,data.password,data.confPassword))
-            // if (!userData) {
-            //     throw new Error('User not found');
-            // }
-            // console.log("Form Submitted: ",data)
-            // console.log("Registration successful. Navigating to /fleets...");
+
             if(userData){
                 navigate("/user/signin")
             }
@@ -56,6 +39,20 @@ export default function Register(){
         }
     }
 
+    const oAuthRedirect = async(e) => {
+        e.preventDefault();
+        sessionStorage.setItem('prevPath', location.pathname);
+        try {
+            const response = await dispatch(oAuthThunk());
+            if (response){
+                if(redirectUrl){
+                    navigate(redirectUrl);
+                    sessionStorage.removeItem('redirectURL');
+            }}
+        } catch (error) {
+            console.error('Authentication Failed: ', error);
+        }
+    }
 
     return(
         
@@ -89,13 +86,13 @@ export default function Register(){
                             <div className="flex w-full justify-between pt-5">
                                 <NavLink to="/user/signin"><p className="font-medium text-sm pt-1">Already have an account?</p></NavLink>
                                 {/* <button type="submit" className="bg-red-900 text-white w-20 rounded-lg"><p className="m-1">Register</p></button> */}
-                                <Button content="Register" className="w-20 font-semibold"/>
+                                <Button content="Register" className="w-20 bg-red-700 text-white hover:bg-red-900 font-semibold"/>
                             </div>
                         </form>
                         {error && <p className="font-bold text-red-800">{error} !!</p>}
                         <p className="text-lg font-semibold mt-5">OR</p>
                         <div className="flex flex-wrap justify-between w-3/5 m-5">
-                            <NavLink><img className="h-10 w-10" src="https://lh3.googleusercontent.com/8v_oGMOj9bgohn50RgLhJ8XGZ2kIUdr0RG4zCkIYnfjK24ORS0WFaTWmnzxXzagUg2fwAmDy1W_Y4oTtIacT2dhQzAqOy5H9Vg23Rq1oVnhUGtOynjY"/></NavLink>
+                            <NavLink onClick={oAuthRedirect}><img className="h-10 w-10" src="https://lh3.googleusercontent.com/8v_oGMOj9bgohn50RgLhJ8XGZ2kIUdr0RG4zCkIYnfjK24ORS0WFaTWmnzxXzagUg2fwAmDy1W_Y4oTtIacT2dhQzAqOy5H9Vg23Rq1oVnhUGtOynjY"/></NavLink>
                             <NavLink><img className="h-8 w-8" src="https://th.bing.com/th?id=OSK.0a0142ba838f808962b476ba0dd54ae8&w=46&h=46&c=3&rs=1&qlt=80&o=6&dpr=1.4&pid=SANGAM"/></NavLink>
                             <NavLink><img className="h-8 w-8" src="https://th.bing.com/th?id=ODLS.45f25068-5b96-4c9e-86a3-99b9f949ac29&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2"/></NavLink>
                         </div>

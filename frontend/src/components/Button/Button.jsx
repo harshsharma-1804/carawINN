@@ -1,8 +1,18 @@
 function Button(props){
-    const defaultClassName = "bg-red-700 p-2 text-xs text-white rounded-md hover:bg-red-900 transition transform";
+    const defaultClassName = "bg-blue-700 text-xs p-2 hover:bg-blue-900 rounded-md transition transform";
     const className = props.className ? `${defaultClassName} ${props.className}` : defaultClassName;
     return (
-        <button className={className}>{props.content}</button>
+        <button 
+        onClick={props.onClick}
+        onChange={props.onChange}
+        onSubmit={props.onSubmit}
+        onMouseOver={props.onMouseOver}
+        onMouseOut={props.onMouseOut}
+        onMouseEnter={props.onMouseEnter}
+        onMouseLeave={props.onMouseLeave}
+        className={className}>
+        {props.content}
+        </button>
     )
 }
 

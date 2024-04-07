@@ -24,19 +24,28 @@ const generateAccessandRefreshTokens = async(userID) => {
     }
 }
 
+// ---------------------------------------------OAUTH---------------------------------------------------------
+
+
+const googleOauth = asyncHandler(async(req,res) => {
+    const {accessToken,refreshToken,profile} = req.user;
+
+    options = {
+        httpOnly: true,
+        secure: false,
+        path: '/'
+    }
+    res
+    .status(200)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(new ApiResponse(200, profile, "User logged in successfully"));
+})
+
+
 // -----------------------------------------register user-----------------------------------------------------
 
 const registerUser = asyncHandler(async(req, res) => {
-    // get user details from frontend
-    // validation - not empty
-    // check if user already exists: username, email
-    // check for images, check for avatar
-    // upload them to cloudinary, avatar
-    // create user object - create entry in db
-    // remove password and refresh token field from response
-    // check for user creation
-    // return res
-
 
     const {fullName, email, password} = req.body
     //console.log("email: ", email);
@@ -94,11 +103,6 @@ const login1 = asyncHandler(async(req,res)=>{
 
     const validatedUser = await User.findById(user._id).select("-password -refreshToken");
 
-    // const options ={
-    //     httpOnly: true,
-    //     secure: true,
-    // }
-
     return res
     .status(200)
     .json(new ApiResponse(200, validatedUser, "User found moving to validation"));
@@ -120,7 +124,7 @@ const login2 = asyncHandler(async(req,res) => {
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
 
     const options={
-        httpOnly: true,
+        httpOnly: false,
         secure: false,
         path: '/'
     }
@@ -142,7 +146,7 @@ const logoutUser = asyncHandler(async (req, res) => {
         httpOnly: true,
         secure: true,
     }
-    res
+    return res
     .status(200)
     .clearCookie("accessToken", options)
     .clearCookie("refreshToken", options)
@@ -174,7 +178,7 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
             throw new ApiError(401, "Refresh token expired or already used");
         }
         const options={
-            httpOnly: true,
+            httpOnly: false,
             secure: false,
             path: '/'
         }
@@ -193,6 +197,7 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
 })
 
 export {
+    googleOauth,
     registerUser,
     login1,
     login2,

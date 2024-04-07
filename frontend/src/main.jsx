@@ -1,25 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {RouterProvider, createBrowserRouter, createRoutesFromElements, Route} from 'react-router-dom'
-import {Home, Dashboard,Profile, PaymentHistory, YourRides,Login1, Login2, Register,FleetPage, Products, BookRide} from './components/index.js'
+import {Home, Dashboard,Profile, PaymentHistory, YourRides, Setting, Login1, Login2, Register,FleetPage, Products, BookRide} from './components/index.js'
 import './index.css'
 import Layer1 from './Layer1.jsx'
 import Layer2 from './Layer2.jsx'
 import { Provider } from 'react-redux'
 import store from './app/store'
 
-// const router = createBrowserRouter([
-//   {
-//     path: '/', element: <App />, children : [{path: '', element: <Home />},
-//                                              {path: 'fleets', element: <FleetPage />},
-//                                              {path: 'fleets/:_title', element: <Products />},
-//                                              {path: 'fleets/_title/bookride/:id', element: <BookRide />}]
-//   },
-//   {
-//     path: 'signin', element: <SignIn />, children : [{path: 'authenticate', element: <Auth />}]
-  
-//   }
-// ])
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +23,7 @@ const router = createBrowserRouter(
           <Route path='profile' element={<Profile />} />
           <Route path='paymenthistory' element={<PaymentHistory />} />
           <Route path='yourrides' element={<YourRides />} />
+          <Route path='setting' element={<Setting />} />
         </Route>
       </Route>
       <Route path='user' element={< Layer2 />}>

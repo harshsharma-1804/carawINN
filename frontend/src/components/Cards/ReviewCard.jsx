@@ -4,7 +4,7 @@ export default function ReviewCard(props) {
     
     return(
         <>
-            <div className="relative flex flex-wrap mx-auto my-20 h-60 w-100 rounded-2xl bg-body-secondary font-semibold">
+            <div className="relative flex flex-wrap mx-auto my-20 h-60 w-100 rounded-2xl bg-body-4 font-semibold">
                 <div className=" flex h-full w-1/2">
                     <img src="https://th.bing.com/th/id/OIP.SzzKGbfC2HvoreYobR4aggAAAA?rs=1&pid=ImgDetMain" className="rounded-s-2xl "></img>
                 </div>

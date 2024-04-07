@@ -2,6 +2,18 @@ import mongoose,{Schema} from 'mongoose'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
+const documentSchema = new Schema({
+    identityProof:{
+        type: String,
+    },
+    license:{
+        type: String,
+    },
+    verification:{
+        type: String,
+    }
+})
+
 const userSchema = new Schema({
     userImage:{
         type: String,
@@ -16,6 +28,7 @@ const userSchema = new Schema({
         type: Number,
         unique: true,
         trim:true,
+        index: true
     },
     email:{
         type: String,
@@ -26,6 +39,15 @@ const userSchema = new Schema({
     password:{
         type: String,
         required: [true, "Password is required"]
+    },
+    address:{
+        type: String,
+        trim:true,
+        index: true
+    },
+    documents: {
+        type: documentSchema,
+        index: true
     },
     refreshToken:{
         type: String
@@ -45,6 +67,12 @@ const userSchema = new Schema({
 userSchema.pre("save", async function(next){
     if(!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password, 10);
+    next();
+});
+
+userSchema.pre("save", async function(next){
+    if(!this.isModified("address")) return next();
+    this.address = this.email.toLowerCase();
     next();
 });
 

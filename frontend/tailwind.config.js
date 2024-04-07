@@ -30,6 +30,8 @@ export default {
         270: "85rem",
         960: "240rem",
         0.2: "20%",
+        0.6: "60%",
+        0.7: "70%",
         0.8: "80%",
         0.9: "90%",
         0.95: "95%",
@@ -37,19 +39,15 @@ export default {
       },
       colors:{
         body:{
-          primary: "#fff2e6",
-          secondary: "#ffe5cc",
-          tertiary: "#ffdccc",
-        },
-        footer: {
-          primary: "#ffeee6",
-          secondary: "#FFC0CB",
-        },
-        home: {
-          primary: "#ab9696",
+          1: "#ff204e",
+          2: "#a0153e",
+          3: "#5d0e41",
+          4: "#00224d",
+          5: "#fbf3d5",
+
         },
         button:{
-          primary: "bh-red-800",
+          primary: "bg-red-800",
           secondary: "#ff9999",
           tertiary: "#ffcccc",
         },

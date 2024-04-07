@@ -34,7 +34,7 @@ export default function LoginPage1(){
 
             navigate('/user/authenticate');
         } catch (error) {
-          console.error('Login Failed: ', error);
+        //   console.error('Login Failed: ', error);
           // Handle login failure (show error message, etc.)
         }
     }
@@ -64,7 +64,7 @@ export default function LoginPage1(){
                             </div>
                             <div className="flex w-full my-5 justify-between">
                                 <NavLink to="/user/signup"  /*onClick={handleRegisterRedirect}*/><p className="font-medium">Create Account</p></NavLink>
-                                <Button content="Next" className="w-20 font-semibold"/>
+                                <Button content="Next" className="w-20 bg-red-700 text-white hover:bg-red-900 font-semibold"/>
                             </div>
                         </form>
                         {error && <p className="font-bold text-red-800">{error} !!</p>}

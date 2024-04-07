@@ -7,7 +7,7 @@ export const login1Thunk = (email) => async(dispatch) => {
   }else{
     try {
       const userData = await login1API(email);
-      dispatch(login1Success(userData.data));
+      dispatch(login1Success(userData));
       // console.log(userData);
       return userData;
     } catch (error) {
@@ -22,27 +22,15 @@ export const login2Thunk = (email,password) => async(dispatch) => {
     return userData;
 };
 
-// export const login2Thunk = (email, password) => async (dispatch) => {
-//   try {
-//       // Call the login2API function to authenticate the user
-//       const userData = await login2API(email, password);
-
-//       // Dispatch action to handle successful login
-//       dispatch(login2Success(userData.data));
-      
-//       // Extract tokens from cookies
-//       const { accessToken, refreshToken } = extractTokensFromCookies();
-      
-//       // Optionally, you can dispatch actions to store tokens in Redux state
-//       dispatch(storeTokens({ accessToken, refreshToken }));
-
-//       return userData;
-//   } catch (error) {
-//       // Handle login failure (dispatch error action, etc.)
-//       dispatch(login2Failure(error));
-//       throw error; // Rethrow the error to handle it in the calling code
-//   }
-// }
+export const oAuthThunk = () => async(dispatch) => {
+  try {
+    const response = await googleOauthAPI();
+    dispatch(login2Success(response));
+    return response;
+  } catch (error) {
+    console.log('OAuth Failed: ', error);
+  }
+}
 
 export const registerThunk = (fullName,email,password,confPassword) => async(dispatch) => {
   try {
@@ -59,7 +47,13 @@ export const registerThunk = (fullName,email,password,confPassword) => async(dis
     return response;
 
   } catch (error) {
-    dispatch(registrationFailure(error.message))
+    if(error.response && error.response.status === 409){
+      console.log('User with email already exists');
+        dispatch(registrationFailure('User with email already exists'))
+    }
+    else{
+      dispatch(registrationFailure(error.message))
+    }
   }
 }
 

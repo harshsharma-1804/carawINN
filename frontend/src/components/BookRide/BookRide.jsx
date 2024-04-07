@@ -12,7 +12,7 @@ function CreateBookRide() {
     useScrollToTop()
     
     const { id, _title } = useParams();
-    const [ridedata, setData] = useState({})  
+    const [data, setData] = useState({})  
     useEffect(() => {
         setData(RideData[id-1])
     }, [id, _title])
@@ -37,8 +37,8 @@ function CreateBookRide() {
         <>
             <BookRidePage 
             image= {useAutoImage(RideData)}
-            title={ridedata.title}
-            subTitle={ridedata.subTitle}
+            title={data.title}
+            subTitle={data.subTitle}
             />
         </>
     )

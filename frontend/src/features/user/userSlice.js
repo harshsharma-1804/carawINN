@@ -36,7 +36,6 @@ const userSlice = createSlice({
             state.error = null;
         },
         registrationFailure: (state,action) => {
-            state.user = action.payload;
             state.error = action.payload;
         },
         logoutSuccess: (state,action) => {
